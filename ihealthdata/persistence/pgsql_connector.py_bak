@@ -1,0 +1,249 @@
+####################Database Access Layer ##############################################
+
+import datetime
+from calendar import timegm
+from string import Template
+import pandas as pd
+import ihealthdata.utils.loggerutils as logger
+#from ihealthdata.persistence.cassandra_error import CassandraError  # TODO find an equivalent Error logging for pgsql
+from ihealthdata.utils.configmanager import ConfigManager
+import sqlalchemy
+#from sqlalchemy import Table, Column, Integer, String, ForeignKey
+from sqlalchemy.sql import and_, or_, not_
+import os
+import psycopg2
+try:
+    from urllib.parse import urlparse
+except ImportError:
+    from urlparse import urlparse
+
+class PostgresConnector(object):
+
+    def __init__(self):
+        try:
+            self.config_manager = ConfigManager()
+
+            #############Put the Cursor outside ########### initiate only once...
+            '''
+            print("Connecting to pgsql")
+            self.url = urlparse.urlparse(os.environ.get('DATABASE_URL'))
+            self.db = "dbname=%s user=%s password=%s host=%s " % (url.path[1:], url.username, url.password, url.hostname)
+            print(self.db)
+            # schema = "schema.sql"
+            self.conn = psycopg2.connect(self.db)
+            print("intermediate")
+            self.cur = self.conn.cursor()
+            print("Connected")
+
+            url = urlparse(os.environ["DATABASE_URL"])
+            print(url.path[1:])
+            print(url.username)
+            print(url.password)
+            print(url.hostname)
+            print(url.port)
+
+            conn = psycopg2.connect(
+                database=url.path[1:],
+                user=url.username,
+                password=url.password,
+                host=url.hostname,
+                port=url.port,
+                sslmode='require',
+                connect_timeout=30000
+            )
+            print(url.port)
+            cursor = conn.cursor()
+
+            cursor.execute("SELECT * FROM activity")
+            rows = cursor.fetchone()
+            print(rows)
+
+
+            logger.debug('Cluster object created successfully')
+            logger.debug('Session object is created successfully')
+            '''
+
+        except Exception as ex:
+                logger.error('Exception Received while trying to connect to postgres')
+                # raise OSError:
+
+    def connect(self):
+        print("Connecting to psgsql ######################################")
+        #url = urlparse('postgres://ufj2de2g0dpmqj:p889e33cf2addb351d9b88698d79d8c139f8e7bd0a084891bcb98bb4312f95bb4@ec2-34-208-141-181.us-west-2.compute.amazonaws.com:5432/dd77v0n5gqsh1k')
+        url = urlparse(os.environ.get('DATABASE_URL'))
+        # db = "dbname=%s user=%s password=%s host=%s " % (url.path[1:], url.username, url.password, url.hostname)
+        schema = "schema.sql"
+        print(url)
+        #print(db)
+        # conn = psycopg2.connect(db)
+        conn = psycopg2.connect(
+            database=url.path[1:],
+            user=url.username,
+            password=url.password,
+            host=url.hostname,
+            port=url.port,
+            sslmode='require',
+            connect_timeout=30000
+        )
+        cur = conn.cursor()
+        return cur
+
+    def queryize(self, query):
+
+        #try:
+        clause = query
+        #print(clause)
+        #clause = results.select().where(results.c.year == 2005)
+
+        #df = pd.read_sql(clause, con=self.connect(self.user, self.password, self.host, self.port, self.db))
+        #clause = results.select().where(results.c.year == 2005)
+
+                                                                   #, (activitymonitoringsimulatedanomaly.c.peopleid=109))
+        #conn = self.connect(self.user, self.password, self.db, self.host)
+
+        #return (df)
+
+        '''    except Exception as ex:
+
+            # logger.info('Exception occured while executing the query : ' + query)
+            # raise CassandraError('Exception occured while executing the query : ' + query ) #, ex.with_traceback())
+            print("getting error in " + query)
+            ## Create and Send empty Pandas Dataframe
+            return (pd.DataFrame())
+        '''
+
+    def data_access_producer(self, peopleid, index):
+        print("Into data access producer")
+        peopleid = peopleid
+        index = index
+        query_template = Template(self.config_manager.config_item('queries', 'producer_query'))
+        producer_query = query_template.safe_substitute(peopleid=peopleid, index=index)
+
+        logger.debug('producer query : ' + producer_query)
+        print("calling querize")
+
+        cur = self.connect()
+        print("cursor obtained")
+        print(cur)
+
+        '''
+        activitymonitoringsimulatedanomaly = meta.tables['activitymonitoringsimulatedanomaly']
+
+        clause = activitymonitoringsimulatedanomaly.select().where( \
+            and_( \
+                activitymonitoringsimulatedanomaly.c.seqno == index, \
+                activitymonitoringsimulatedanomaly.c.peopleid == peopleid \
+                ) \
+            )
+        '''
+
+        print("trying to execute query")
+
+        rows = cur.execute("""select * from activitymonitoringsimulatedanomaly where peopleid = 109 and seqno = 109""")
+
+        print("rows returned ====>" + rows)
+        # rows = self.cur.fetchall()
+        print("getting DF")
+        # print(clause)
+        # df = con.execute(clause)
+        # df = pd.read_sql(clause, con)
+        return  rows
+
+
+
+    def insert_activity_prediction(self, peopleid, activitydatetime, seqno, actualactivityid, \
+                                   predictedactivityid, predictionaccuracy, heartrate):
+        con, meta = self.connect(self.user, self.password, self.db, self.host)
+        activity_prediction = meta.tables['activity_prediction']
+
+        clause = activity_prediction.insert().values(peopleid=str(peopleid),
+                                                     activitydatetime=str(activitydatetime), \
+                                                     seqno=str(seqno), \
+                                                     actualactivityid=str(actualactivityid), \
+                                                     predictedactivityid=str(predictedactivityid), \
+                                                     predictionaccuracy=str(predictionaccuracy), \
+                                                     heartrate=str(heartrate))
+
+        con.execute(clause)
+
+    def insert_activity_prediction_summary(self, peopleid, activitystartdatetime,  \
+                                           activityenddatetime, seqno, activityid, persistentinminutes, avgheartrate, \
+                                           minheartrate, maxheartrate, prediction_accuracy_subinterval):
+
+        con, meta = self.connect(self.user, self.password, self.db, self.host)
+        activity_prediction_summary = meta.tables['activity_prediction_summary']
+
+
+
+        clause = activity_prediction_summary.insert().values(( \
+            peopleid, activitystartdatetime, activityenddatetime, seqno, \
+            activityid, persistentinminutes, avgheartrate, \
+            minheartrate, maxheartrate, prediction_accuracy_subinterval))
+        con.execute(clause)
+
+    # insert_cardiac_exception
+
+
+    def insert_cardiac_exception(self, peopleid, exceptiondatetime, \
+                                 seqno, activityid, isAnomaly, heartrate, riskscore):
+
+        con, meta = self.connect(self.user, self.password, self.db, self.host)
+        activity_prediction = meta.tables['cardiac_exceptions']
+
+        clause = activity_prediction.insert().values(peopleid=str(peopleid),
+                                                     exceptiondatetime=str(exceptiondatetime), \
+                                                     seqno=str(seqno), \
+                                                     activityid=str(activityid), \
+                                                     isAnomaly=str(isAnomaly), \
+                                                     heartrate=str(heartrate), \
+                                                     riskscore=str(riskscore))
+
+        con.execute(clause)
+
+    def insert_cardiac_exception_summary(self, peopleid, exceptionstartdatetime, exceptionenddatetime, \
+                                         seqno, activityid, persistentinminutes, avgheartrate, \
+                                         minheartrate, maxheartrate, avgriskscore, maxriskscore):
+
+        con, meta = self.connect(self.user, self.password, self.db, self.host)
+        activity_prediction = meta.tables['cardiac_exceptions_summary']
+
+        clause = activity_prediction.insert().values(peopleid=str(peopleid),
+                                                     exceptionstartdatetime=str(exceptionstartdatetime), \
+                                                     exceptionenddatetime=str(exceptionenddatetime), \
+                                                     seqno=str(seqno), \
+                                                     activityid=str(activityid), \
+                                                     persistentinminutes=str(persistentinminutes), \
+                                                     avgheartrate=str(avgheartrate), \
+                                                     minheartrate=str(minheartrate), \
+                                                     maxheartrate=str(maxheartrate), \
+                                                     avgriskscore=str(avgriskscore), \
+                                                     maxriskscore=str(maxriskscore))
+
+        con.execute(clause)
+
+    def people_anomaly_stat_insert(self, peopleid, anomaly_status):
+        dummy = "1111"
+        # people_anomaly_stat_query = Template(self.config_manager.config_item('queries', 'people_anomaly_stat'))
+
+        con, meta = self.connect(self.user, self.password, self.db, self.host)
+        activity_prediction = meta.tables['people']
+
+        clause = activity_prediction.update().values(dummy=str(dummy), \
+                                                     anomaly_status=str(anomaly_status)).where(peopleid=str(peopleid))
+
+        clause = activitymonitoringsimulatedanomaly.select().where( \
+            and_( \
+                activitymonitoringsimulatedanomaly.c.seqno == index, \
+                activitymonitoringsimulatedanomaly.c.peopleid == peopleid \
+                ) \
+            )
+        con.execute(clause)
+
+'''
+if __name__ == '__main__':
+    cc = PostgresConnector()
+    query = cc.data_access_producer(101,101)
+    print(query)
+'''
+
+

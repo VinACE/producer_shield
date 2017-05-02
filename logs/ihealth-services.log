@@ -1,0 +1,57 @@
+2017-03-30 19:24:24,971 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-30 19:26:32,971 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:29:02,554 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:29:02,982 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:29:37,604 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:30:49,109 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:30:49,362 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:31:12,984 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 11:31:12,984 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:31:44,153 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 11:31:44,153 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:31:50,588 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 11:31:50,588 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:32:47,705 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:32:58,580 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:32:58,829 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:33:50,596 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:35:02,559 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:35:38,805 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 11:35:38,806 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:36:40,661 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:47:00,689 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 11:47:00,689 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:47:14,609 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 11:47:14,610 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:47:59,621 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 11:47:59,621 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:59:46,731 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 12:00:34,937 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 12:02:21,281 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 12:52:14,486 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 12:53:13,006 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 12:55:20,274 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 13:05:02,097 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 13:05:02,097 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 13:20:05,087 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 13:20:05,088 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 14:35:10,841 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 14:35:10,841 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 14:35:10,841 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 14:35:22,691 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 14:35:22,692 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 14:35:22,692 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 14:40:01,999 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 14:40:02,000 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 14:40:02,000 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 14:40:09,866 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 14:40:09,867 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 14:40:09,867 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 14:40:31,205 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 14:40:31,205 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 14:40:31,205 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 15:33:05,381 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 15:33:20,907 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 16:20:06,945 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 16:20:26,894 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 16:37:37,963 - ihealthservices - ERROR - Exception Received while trying to connect to postgres

@@ -1,0 +1,17 @@
+2017-03-30 18:57:15,031 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-30 18:57:33,646 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-30 18:59:05,037 - ihealthservices - DEBUG - Cluster object created successfully
+2017-03-30 18:59:05,037 - ihealthservices - DEBUG - Session object is created successfully
+2017-03-30 19:00:18,522 - ihealthservices - DEBUG - Cluster object created successfully
+2017-03-30 19:00:18,522 - ihealthservices - DEBUG - Session object is created successfully
+2017-03-30 19:03:29,803 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:35:56,670 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:35:56,680 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 11:36:42,258 - ihealthservices - ERROR - Exception Received while trying to connect to postgres
+2017-03-31 11:36:42,258 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 11:49:56,659 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 11:50:21,966 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 11:51:01,931 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 11:54:32,093 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 11:58:42,273 - ihealthservices - DEBUG - producer query : SELECT * from activitymonitoringsimulatedanomaly WHERE (seqno = 101 ) AND (peopleid = 101 );
+2017-03-31 17:28:34,011 - ihealthservices - ERROR - Exception Received while trying to connect to postgres

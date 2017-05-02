@@ -1,0 +1,1 @@
+worker: python -u ./ihealthdata/producer/ihealth_demo_simulator.py
